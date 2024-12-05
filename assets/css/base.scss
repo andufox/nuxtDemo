@@ -1,0 +1,61 @@
+$color1: green;
+
+.color2 {
+  color: red;
+}
+
+.shantext {
+  animation: text-blink 1s infinite alternate;
+}
+@keyframes text-blink {
+  from {
+    opacity: 1;
+    color: #000;
+  }
+
+  to {
+    opacity: 0.5;
+    /* color: #000; */
+  }
+}
+
+/* 滚动槽 */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* svg动态变化 */
+@keyframes mask {
+  0% {
+    -webkit-mask-position: 0px 0px;
+    -webkit-mask-size: 60%;
+  }
+  25% {
+    -webkit-mask-position: 21px 5px;
+    -webkit-mask-size: 150%;
+  }
+  50% {
+    -webkit-mask-position: -50px 5px;
+    -webkit-mask-size: 180%;
+  }
+  75% {
+    -webkit-mask-position: 23px 0px;
+    -webkit-mask-size: 100%;
+  }
+  100% {
+    -webkit-mask-position: 0px 0px;
+    -webkit-mask-size: 60%;
+  }
+}

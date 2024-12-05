@@ -1,0 +1,312 @@
+{
+  "currentUser": {
+    "prefix": "cu",
+    "body": ["const { currentUser } = useCurrentUser();"]
+  },
+  "$AV": {
+    "prefix": "av",
+    "body": ["const { $$AV } = useNuxtApp();"]
+  },
+  "Vue Component": {
+    "prefix": "vc",
+    "body": [
+      "<template>",
+      "  <div class='${1:ComponentName}'>${1:ComponentName}</div>",
+      "</template>",
+      ""
+    ]
+  },
+  "Arrow function": {
+    "prefix": "af",
+    "body": "() => {${1}}"
+  },
+  "script:setup": {
+    "prefix": "ss",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "  ${1}",
+      "</script>",
+      ""
+    ]
+  },
+  "style:postcss": {
+    "prefix": "sp",
+    "body": [
+      "<style lang=\"postcss\" scoped>",
+      "  ${1}",
+      "</style>",
+      ""
+    ]
+  },
+  "useAnimation": {
+    "prefix": "ua",
+    "body": [
+      "const { \\$gsap, root } = useAnimation(() => {",
+      "${1}",
+      "});"
+    ]
+  },
+  "template": {
+    "prefix": "tp",
+    "body": ["<template>", "  ${1}", "</template>", ""]
+  },
+  "Destructuring assignment object": {
+    "prefix": "dao",
+    "body": ["const {${2}} = ${1};"]
+  },
+  "Destructuring assignment array": {
+    "prefix": "daa",
+    "body": ["const {${2}} = ${1};"]
+  },
+  "Composable async": {
+    "prefix": "cpa",
+    "body": ["export const ${1} = async () => {${2}};"]
+  },
+  "Composable": {
+    "prefix": "cp",
+    "body": ["export const ${1} = () => {${2}};"]
+  },
+  "Ref HTMLElement": {
+    "prefix": "re",
+    "body": ["const ${1} = ref<HTMLElement>();"]
+  },
+  "Component props": {
+    "prefix": "pp",
+    "body": [
+      "/**",
+      " * 属性",
+      " */",
+      "type Props = { $1 };",
+      "",
+      "const props = defineProps<Props>();"
+    ]
+  },
+  "Component props with defaults": {
+    "prefix": "ppw",
+    "body": [
+      "/**",
+      " * 属性",
+      " */",
+      "type Props = { $1 };",
+      "",
+      "const props = withDefaults(defineProps<Props>(), {$2});"
+    ]
+  },
+  "Single type store": {
+    "prefix": "sts",
+    "body": [
+      "import type { SingleResponse } from '../types/single-response.type';",
+      "",
+      "export const use${1}Store = async () => {",
+      "  const ${2} = useState<SingleResponse>('${2}');",
+      "",
+      "  const get${1} = async () => {",
+      "    const query = useQueryString({",
+      "      populate: singleApiPopulate,",
+      "    });",
+      "",
+      "    const { data } = await useApiHttpClient<SingleResponse>(",
+      "      `/api/${2}?\\${query\\}`,",
+      "    );",
+      "",
+      "    if (data.value) {",
+      "      ${2}.value = data.value;",
+      "    }",
+      "  };",
+      "",
+      "  if (!${2}.value) {",
+      "    await get${1}();",
+      "  }",
+      "",
+      "  return ${2};",
+      "};",
+      ""
+    ]
+  },
+  "Server api handler": {
+    "prefix": "sa",
+    "body": [
+      "export default defineEventHandler(async (event) => {",
+      "${1}",
+      "});"
+    ]
+  },
+  "Pinia Store": {
+    "prefix": "ps",
+    "body": [
+      "/**",
+      " * ${1}Store",
+      " */",
+      "export const use${1}Store = defineStore('${2}', () => {",
+      "  /**",
+      "   * State 🌴",
+      "   */",
+      "  ",
+      "  ${3}",
+      "  ",
+      "  /**",
+      "   * Getters 🌵",
+      "   */",
+      "",
+      "  /**",
+      "   * Actions 🚀",
+      "   */",
+      "",
+      "  /**",
+      "   * 返回值",
+      "   */",
+      "  return {};",
+      "});"
+    ]
+  },
+  "Zod Schema": {
+    "prefix": "zs",
+    "body": [
+      "/**",
+      " * ${1}：Schema",
+      " */",
+      "export const ${2}Schema = z.object({",
+      "  ${3}",
+      "});",
+      "",
+      "/**",
+      " * ${1}：Type",
+      " */",
+      "export type ${2} = z.infer<typeof ${2}Schema>;"
+    ]
+  },
+  "Zod Store Schema": {
+    "prefix": "zss",
+    "body": [
+      "import { z } from 'zod';",
+      "",
+      "/**",
+      " * 创建",
+      " */",
+      "export const create${1}DtoSchema = z.object({",
+      "  ",
+      "});",
+      "",
+      "/**",
+      " * 更新",
+      " */",
+      "export const update${1}DtoSchema = z.optional(create${1}DtoSchema)",
+      "",
+      "/**",
+      " * 实体",
+      " */",
+      "export const ${2}Schema = z.object({})",
+      "",
+      "/**",
+      " * 列表",
+      " */",
+      "export const ${3}Schema = z.array(${2}Schema)",
+      "",
+      "/**",
+      " * 类型",
+      " */",
+      "export type ${1} = z.infer<typeof ${2}Schema>;",
+      "export type ${4} = z.infer<typeof ${3}Schema>;",
+      "export type Create${1}Dto = z.infer<typeof create${1}DtoSchema>;",
+      "export type Update${1}Dto = z.infer<typeof update${1}DtoSchema>;",
+      "",
+      "/**",
+      " * 空白",
+      " */",
+      "export const _${2}: ${1} = {",
+      "",
+      "}",
+      ""
+    ]
+  },
+  "Nuxt runtime config": {
+    "prefix": "urc",
+    "body": ["const config${1} = useRuntimeConfig();"]
+  },
+  "Nuxt useHead title": {
+    "prefix": "uht",
+    "body": [
+      "/**",
+      " * 页头",
+      " */",
+      "useHead({",
+      "  title: '${1}',",
+      "});"
+    ]
+  },
+  "Nuxt definePageMeta": {
+    "prefix": "dpm",
+    "body": [
+      "/**",
+      " * 页面元数据",
+      " */",
+      "definePageMeta({",
+      "  ${1}",
+      "});"
+    ]
+  },
+
+  "import zod": {
+    "prefix": "iz",
+    "body": ["import { z } from 'zod';"]
+  },
+  "sj": {
+    "prefix": ["sj", "shijian", "time"],
+    // "scope":"log",
+    "description": "时间，包含日期和时间:2024-06-24 09:22:47",
+    "body": [
+      "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND $0 "
+    ]
+  },
+  "tp": {
+    "prefix": ["tp", "template"],
+    "description": "template",
+    "body": [
+      "<template>",
+      "  <div>",
+      "    $0",
+      "  </div>",
+      "</template>"
+    ]
+  },
+  "ts": {
+    "prefix": ["ts", "typescript"],
+    "description": "template typescript",
+    "body": ["<script setup lang=\"ts\">", "  $0", "</script>"]
+  },
+  "tts": {
+    "prefix": ["tts", "template-typescript"],
+    "description": "template typescript",
+    "body": [
+      "<template>",
+      "  <div>",
+      "    $1",
+      "  </div>",
+      "</template>",
+      "",
+      "<script setup lang=\"ts\">",
+      "    $0",
+      "</script>"
+    ]
+  },
+  "af": {
+    "prefix": ["af", "afunction"],
+    "description": "ts函数()=>{}",
+    "body": ["($1)=>{ $0 }"]
+  },
+  "props": {
+    "prefix": ["props", "ap"],
+    "description": "定义属性props",
+    "body": ["const props = defineProps({", "$0", "})"]
+  },
+  "computed": {
+    "prefix": ["com", "computed"],
+    "description": "定义计算函数computed(()=>)",
+    "body": ["const $1 =computed(()=>{ $0 })"]
+  },
+  "computed2": {
+    "prefix": ["comp", "computed2"],
+    "description": "定义计算函数computed(()=>)",
+    "body": ["computed(()=>{ $0 })"]
+  }
+}
